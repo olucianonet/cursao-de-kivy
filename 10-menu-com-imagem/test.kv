@@ -1,0 +1,58 @@
+<Manager>:
+    Menu:
+        name: 'menu'
+    Tasks:
+        name: 'tasks'
+
+<Menu>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 50
+        Image:
+            allow_stretch:True
+            height: 350
+            size_hint_y: None
+            source:'images/python-android.png'
+        Button:
+            text: 'Tasks'
+            on_release: app.root.current = 'tasks'
+        Button:
+            text: 'Assistent'
+        Button:
+            text: 'Quit'
+            on_release: app.stop()
+
+<Tasks>:
+    BoxLayout:
+        orientation: 'vertical'
+        ScrollView:
+            BoxLayout:
+                height: self.minimum_height
+                id: box
+                orientation: 'vertical'
+                size_hint_y: None
+        BoxLayout:
+            size_hint_y: None
+            height: 100
+            TextInput:
+                id: text1
+            Button:
+                on_release: root.addWidget()
+                size_hint_x: None
+                text: '+'
+                width: 60
+            Button:
+                on_release: app.root.current = 'menu'
+                text: 'Back'
+
+<Task>:
+    height: 200
+    size_hint_y: None
+    Label:
+        id: label1
+    Button:
+        on_release: app.root.get_screen('tasks').ids.box.remove_widget(root)
+        size_hint_x: None
+        text: 'X'
+        width: 60

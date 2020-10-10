@@ -1,0 +1,38 @@
+<Manager>:
+    Screen:
+        Button:
+            text: 'Show tasks'
+            on_release: root.current = 'tasks'
+    Tasks:
+        name: 'tasks'
+
+<Tasks>:
+    BoxLayout:
+        orientation: 'vertical'
+        ScrollView:
+            BoxLayout:
+                height: self.minimum_height
+                id: box
+                orientation: 'vertical'
+                size_hint_y: None
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+            TextInput:
+                id: text1
+            Button:
+                on_release: root.addWidget()
+                size_hint_x: None
+                text: '+'
+                width: 60
+
+<Task>:
+    height: 200
+    size_hint_y: None
+    Label:
+        id: label1
+    Button:
+        on_release: app.root.get_screen('tasks').ids.box.remove_widget(root)
+        size_hint_x: None
+        text: 'X'
+        width: 60

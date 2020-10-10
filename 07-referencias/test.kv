@@ -1,0 +1,17 @@
+<Tasks>:
+    BoxLayout:
+        height: self.minimum_height
+        id: box
+        orientation: 'vertical'
+        size_hint_y: None
+
+<Task>:
+    height: 200
+    size_hint_y: None
+    Label:
+        id: label1
+    Button:
+        on_release: app.root.ids.box.remove_widget(root)
+        size_hint_x: None
+        text: 'X'
+        width: 60
